@@ -1,0 +1,54 @@
+---
+alwaysApply: true
+---
+
+Always follow this project architecture pattern:
+
+src/
+├── app/                     # App Router (routing, pages, layouts only)
+│   └── ...                 # Each route folder should only contain pages/layouts
+│
+├── components/              # Global, reusable, presentation-only components
+│   ├── ui/                 # Buttons, inputs, dropdowns, etc.
+│   ├── layout/             # Headers, navbars, sidebars
+│   ├── charts/             #
+│   └── common/             # Si es un componente UI reutilizable pero no es un “primitive      (botón/input), va acá.
+│
+├── modules/                 # Feature or domain-based modules
+│   ├── {feature}/
+│   │   ├── components/     # Feature-specific UI components
+│   │   ├── graphql/        # Queries, mutations, fragments for that feature
+│   │   ├── hooks/          # Feature-specific hooks
+│   │   └── utils/          # Feature-specific helper functions
+│
+├── lib/                     # Libraries, configuration, API clients
+│   ├── apollo/             # GraphQL client setup (if used)
+│   ├── supabase/           # Service clients (if used)
+│   ├── analytics/
+│   └── utils/
+│
+├── styles/                 # Global styles (CSS/Tailwind)
+├── types/                  # Global TypeScript types
+├── graphql/                # Global schema, fragments (optional)
+├── config/                 # Environment, constants, app configuration
+└── hooks/                  # Global reusable hooks
+
+GENERAL RULES:
+- Pages must ALWAYS live inside src/app/** and should only import feature modules or global components.
+- Never place business logic or heavy UI inside app/**.
+- Feature/domain-specific UI must go inside modules/{feature}/components.
+- All GraphQL queries/mutations must go inside modules/{feature}/graphql.
+- Generic UI-only components must go inside components/ui/.
+- Global configuration or client code must go inside lib/.
+- New features must be grouped inside modules/{feature}/.
+- For imports always use 'components/component1', no alias, and no relative path
+
+When the user requests something:
+- If it's a page → create it under app/ and import from modules/.
+- If it's a feature-specific component → modules/{feature}/components/.
+- If it's a GraphQL query/mutation → modules/{feature}/graphql/.
+- If it's shared UI → components/ui/.
+- If it's shared logic → lib/ or hooks/.
+- If it's a helper function → modules/{feature}/utils/ or lib/utils/.
+
+Never ignore this structure.
