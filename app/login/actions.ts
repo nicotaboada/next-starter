@@ -94,3 +94,36 @@ export async function loginAction(
 	// Successful login - redirect to dashboard
 	redirect('/dashboard')
 }
+
+/**
+ * Server Action to log out the current user.
+ * This action runs on the server and handles the sign out flow with Supabase.
+ *
+ * Flow:
+ * 1. Create Supabase client
+ * 2. Sign out the user
+ * 3. Redirect to login page
+ *
+ * @example
+ * ```tsx
+ * 'use client'
+ * import { logoutAction } from 'app/login/actions'
+ *
+ * function LogoutButton() {
+ *   const handleLogout = async () => {
+ *     await logoutAction()
+ *   }
+ *
+ *   return <button onClick={handleLogout}>Log out</button>
+ * }
+ * ```
+ */
+export async function logoutAction(): Promise<void> {
+	const supabase = await createClient()
+
+	// Sign out the user
+	await supabase.auth.signOut()
+
+	// Redirect to login page
+	redirect('/login')
+}

@@ -1,12 +1,28 @@
 import 'styles/tailwind.css'
 import { ThemeProvider } from 'next-themes'
-import { AppHeader } from 'components/layouts/app-header'
-import { AppLayout } from 'components/layouts/app-layout'
-import { AppSidebar } from 'components/layouts/app-sidebar'
-import { SidebarInset, SidebarProvider } from 'components/ui/sidebar'
 import { Toaster } from 'components/ui/sonner'
 import { ApolloWrapper } from 'lib/apollo/apollo-wrapper'
 
+/**
+ * Root layout for the entire application.
+ * This layout provides global providers and configurations.
+ *
+ * Features:
+ * - Theme provider for dark/light mode
+ * - Apollo GraphQL client wrapper
+ * - Toast notifications
+ *
+ * Note: The sidebar and header are NOT included here.
+ * They are only shown in authenticated routes via (authenticated)/layout.tsx
+ *
+ * Public routes (no sidebar/header):
+ * - / (landing page)
+ * - /login
+ * - /forgot-pass (future)
+ *
+ * Authenticated routes (with sidebar/header):
+ * - Routes inside (authenticated)/ route group
+ */
 export default function RootLayout({
 	children,
 }: {
@@ -17,13 +33,7 @@ export default function RootLayout({
 			<body>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<ApolloWrapper>
-						<SidebarProvider>
-							<AppSidebar />
-							<SidebarInset>
-								<AppHeader />
-								<AppLayout>{children}</AppLayout>
-							</SidebarInset>
-						</SidebarProvider>
+						{children}
 						<Toaster />
 					</ApolloWrapper>
 				</ThemeProvider>

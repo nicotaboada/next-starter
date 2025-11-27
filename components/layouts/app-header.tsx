@@ -1,6 +1,7 @@
 'use client'
 
 import { SidebarTrigger } from 'components/ui/sidebar'
+import { UserAvatarMenu } from 'modules/auth/components/user-avatar-menu'
 
 /**
  * Main application header that appears at the top of all pages.
@@ -34,9 +35,8 @@ export function AppHeader() {
 		<header className="border-sidebar-border bg-background sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b px-4">
 			<SidebarTrigger className="-ml-1 cursor-pointer" />
 
-			{/* Espacio para futuros elementos del header (notificaciones, perfil, etc.) */}
 			<div className="ml-auto flex items-center gap-4">
-				{/* TODO: Agregar elementos adicionales aquí */}
+				<UserAvatarMenu />
 			</div>
 		</header>
 	)

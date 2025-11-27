@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { Button } from 'components/ui/button'
-import { UsersTable } from 'modules/users/components/users-table'
 
 export const metadata: Metadata = {
 	title: 'Next.js Enterprise Boilerplate',
@@ -34,14 +34,8 @@ export default function Web() {
 							development, AI-powered code reviews, and an extensive suite of
 							tools for a smooth and enjoyable development process.
 						</p>
-						<Button href="/login" className="mr-3">
-							Get started
-						</Button>
-						<Button
-							href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
-							intent="secondary"
-						>
-							Deploy Now
+						<Button asChild className="mr-3">
+							<Link href="/login">Login</Link>
 						</Button>
 					</div>
 				</div>
@@ -50,7 +44,6 @@ export default function Web() {
 				<div className="mx-auto max-w-(--breakpoint-xl) px-4 py-8 sm:py-16 lg:px-6">
 					<div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3"></div>
 				</div>
-				<UsersTable />
 			</section>
 		</>
 	)

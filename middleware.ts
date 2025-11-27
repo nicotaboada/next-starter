@@ -14,6 +14,10 @@ import { createClient } from './lib/supabase/middleware'
  *
  * Protected routes:
  * - /dashboard and all its subroutes
+ * - /students and all its subroutes
+ * - /teachers and all its subroutes
+ * - /finanzas and all its subroutes
+ * - /settings and all its subroutes
  *
  * Public routes (no auth required):
  * - / (landing page)
@@ -31,8 +35,21 @@ export async function middleware(request: NextRequest) {
 		data: { session },
 	} = await supabase.auth.getSession()
 
+	// Define protected routes that require authentication
+	const protectedRoutes = [
+		'/dashboard',
+		'/students',
+		'/teachers',
+		'/finanzas',
+		'/settings',
+	]
+
 	// Check if trying to access protected routes without authentication
-	if (!session && request.nextUrl.pathname.startsWith('/dashboard')) {
+	const isProtectedRoute = protectedRoutes.some((route) =>
+		request.nextUrl.pathname.startsWith(route)
+	)
+
+	if (!session && isProtectedRoute) {
 		// Redirect to login with the original URL to return after auth
 		const redirectUrl = new URL('/login', request.url)
 		redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname)
@@ -56,7 +73,8 @@ export async function middleware(request: NextRequest) {
  * - root page (/) - public landing page
  *
  * Note: The regex pattern matches all routes except those listed above.
- * This ensures the middleware runs on /dashboard and its subroutes.
+ * This ensures the middleware runs on protected routes like /dashboard, /students,
+ * /teachers, /finanzas, /settings and their subroutes.
  */
 export const config = {
 	matcher: [
