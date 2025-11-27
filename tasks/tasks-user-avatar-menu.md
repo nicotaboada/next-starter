@@ -53,13 +53,13 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 4.1 Import UserAvatarMenu component in `components/layouts/app-header.tsx`
   - [x] 4.2 Add component to the right side of header (ml-auto section)
   - [x] 4.3 Remove TODO comment placeholder
-- [ ] 5.0 Test and verify functionality
-  - [ ] 5.1 Start development server and navigate to dashboard
-  - [ ] 5.2 Verify avatar displays with correct initials
-  - [ ] 5.3 Test popover opens/closes on click
-  - [ ] 5.4 Verify user name and email display correctly
-  - [ ] 5.5 Test theme switching (Light, Dark, System)
-  - [ ] 5.6 Test logout functionality and redirect to /login
-  - [ ] 5.7 Check responsive behavior on mobile viewport
-  - [ ] 5.8 Test keyboard navigation (Tab, Enter, Escape)
+- [x] 5.0 Test and verify functionality
+  - [x] 5.1 Start development server and navigate to dashboard
+  - [x] 5.2 Verify avatar displays with correct initials
+  - [x] 5.3 Test popover opens/closes on click
+  - [x] 5.4 Verify user name and email display correctly
+  - [x] 5.5 Test theme switching (Light, Dark, System)
+  - [x] 5.6 Test logout functionality and redirect to /login
+  - [x] 5.7 Check responsive behavior on mobile viewport
+  - [x] 5.8 Test keyboard navigation (Tab, Enter, Escape)
 

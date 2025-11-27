@@ -101,7 +101,7 @@ export function UserAvatarMenu() {
 
 					<button
 						onClick={() => setTheme('light')}
-						className={`hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
+						className={`hover:bg-accent hover:text-accent-foreground flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
 							theme === 'light' ? 'bg-accent text-accent-foreground' : ''
 						}`}
 					>
@@ -111,7 +111,7 @@ export function UserAvatarMenu() {
 
 					<button
 						onClick={() => setTheme('dark')}
-						className={`hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
+						className={`hover:bg-accent hover:text-accent-foreground flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
 							theme === 'dark' ? 'bg-accent text-accent-foreground' : ''
 						}`}
 					>
@@ -121,7 +121,7 @@ export function UserAvatarMenu() {
 
 					<button
 						onClick={() => setTheme('system')}
-						className={`hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
+						className={`hover:bg-accent hover:text-accent-foreground flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors ${
 							theme === 'system' ? 'bg-accent text-accent-foreground' : ''
 						}`}
 					>
@@ -135,7 +135,7 @@ export function UserAvatarMenu() {
 				{/* Section 3: Logout */}
 				<button
 					onClick={handleLogout}
-					className="hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors"
+					className="hover:bg-accent hover:text-accent-foreground flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm transition-colors"
 				>
 					<LogOut className="size-4" />
 					<span>Log out</span>
