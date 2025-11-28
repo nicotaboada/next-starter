@@ -32,7 +32,7 @@ import { UserAvatarMenu } from 'modules/auth/components/user-avatar-menu'
  */
 export function AppHeader() {
 	return (
-		<header className="border-sidebar-border bg-background sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b px-4">
+		<header className="border-sidebar-border bg-background sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 px-4">
 			<SidebarTrigger className="-ml-1 cursor-pointer" />
 
 			<div className="ml-auto flex items-center gap-4">

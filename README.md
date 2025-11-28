@@ -1,105 +1,267 @@
+# Next.js Enterprise Starter
 
-# [Next.js Enterprise Boilerplate](https://blazity.com/open-source/nextjs-enterprise-boilerplate) 
+Un starter moderno y completo para aplicaciones empresariales construido con Next.js, Apollo Client, y Supabase.
 
-A production-ready template for building enterprise applications with Next.js. This boilerplate provides a solid foundation with carefully selected technologies and ready-to-go infrastructure to help you develop high-quality applications efficiently.
+## 🚀 Stack Tecnológico
 
-## Motivation
+### Core
+- **[Next.js 16](https://nextjs.org/)** - App Router con Turbopack para desarrollo ultra rápido
+- **[React 19](https://react.dev/)** - Última versión con mejoras de rendimiento
+- **[TypeScript](https://www.typescriptlang.org/)** - Configuración strict para máxima seguridad de tipos
+- **[Apollo Client](https://www.apollographql.com/docs/react/)** - Cliente GraphQL con integración para Next.js
 
-While most Next.js boilerplates focus on individual developer needs with excessive complexity, **next-enterprise** prioritizes strategic simplicity for enterprise teams. It offers a streamlined foundation with high-impact features that maximize developer productivity and accelerate time-to-market for business-critical applications.
+### Backend & Autenticación
+- **[Supabase](https://supabase.com/)** - Autenticación y base de datos
+- **[GraphQL](https://graphql.org/)** - API con tipado fuerte
 
-<a href="https://blazity.com/">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/blazity-logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="/assets/blazity-logo-light.svg">
-  <img alt="Logo" align="right" height="80" src="/assets/blazity-logo-light.svg">
-</picture>
-</a>
+### UI & Estilos
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Framework utility-first
+- **[Radix UI](https://www.radix-ui.com/)** - Componentes accesibles sin estilos
+- **[Motion (Framer Motion)](https://motion.dev/)** - Animaciones fluidas y profesionales
+- **[Lucide React](https://lucide.dev/)** - Iconos modernos
 
-> [!NOTE]
-> **Blazity** is a group of Next.js architects. We help organizations architect, optimize, and deploy high-performance Next.js applications at scale. Contact us at [contact@blazity.com](https://blazity.com) if you’d like to talk about your project.
+### State Management & Formularios
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - State management simple y escalable
+- **[React Hook Form](https://react-hook-form.com/)** - Formularios performantes
+- **[Zod](https://zod.dev/)** - Validación de esquemas con TypeScript
 
+### Desarrollo & Calidad
+- **[Vitest](https://vitest.dev/)** - Testing ultra rápido
+- **[Storybook](https://storybook.js.org/)** - Documentación de componentes
+- **[ESLint 9](https://eslint.org/)** + **[Prettier](https://prettier.io/)** - Code quality
+- **[OpenTelemetry](https://opentelemetry.io/)** - Observabilidad integrada
+- **[T3 Env](https://env.t3.gg/)** - Variables de entorno type-safe
 
+## 📁 Estructura del Proyecto
 
-## Documentation
+```
+src/
+├── app/                     # App Router - páginas y layouts
+│   ├── (authenticated)/    # Rutas protegidas
+│   ├── login/              # Autenticación
+│   └── layout.tsx          # Layout raíz
+│
+├── components/              # Componentes globales reutilizables
+│   ├── ui/                 # Primitivos (buttons, inputs, cards, etc.)
+│   └── layouts/            # Layouts (header, sidebar, breadcrumb)
+│
+├── modules/                 # Features organizadas por dominio
+│   ├── auth/
+│   │   ├── components/     # Componentes específicos de auth
+│   │   ├── hooks/          # Hooks de auth
+│   │   └── graphql/        # Queries/mutations de auth
+│   ├── students/
+│   └── users/
+│
+├── lib/                     # Configuración y clientes
+│   ├── apollo/             # Apollo Client setup
+│   ├── supabase/           # Supabase client y auth
+│   ├── config/             # Configuraciones de la app
+│   └── utils/              # Utilidades globales
+│
+├── hooks/                   # Custom hooks globales
+├── types/                   # TypeScript types globales
+└── styles/                  # Estilos globales
+```
 
-There is a separate documentation that explains its functionality, highlights core business values and technical decisions, provides guidelines for future development, and includes architectural diagrams.
+### Principios de Arquitectura
 
-We encourage you to [visit our docs (docs.blazity.com)](https://docs.blazity.com) to learn more
+1. **Separación de responsabilidades**: Las páginas solo importan desde `modules/` o `components/`
+2. **Colocation**: Features contienen todo lo relacionado (componentes, hooks, GraphQL, utils)
+3. **Reusabilidad**: Componentes UI genéricos en `components/`, específicos en `modules/`
+4. **Type-safety**: Todo tipado con TypeScript strict mode
 
-## Integrated features
+## 🛠️ Comandos
 
-### Boilerplate
-With this template you will get all the boilerplate features included:
+### Desarrollo
 
-* [Next.js 15](https://nextjs.org/) - Performance-optimized configuration using App Directory
-* [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework for efficient UI development
-* [ESlint 9](https://eslint.org/) and [Prettier](https://prettier.io/) - Code consistency and error prevention
-* [Corepack](https://github.com/nodejs/corepack) & [pnpm](https://pnpm.io/) as the package manager - For project management without compromises 
-* [Strict TypeScript](https://www.typescriptlang.org/) - Enhanced type safety with carefully crafted config and [ts-reset](https://github.com/total-typescript/ts-reset) library
-* [GitHub Actions](https://github.com/features/actions) - Pre-configured workflows including bundle size and performance tracking
-* Perfect Lighthouse score - Optimized performance metrics
-* [Bundle analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) - Monitor and manage bundle size during development
-* Testing suite - [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com/react), and [Playwright](https://playwright.dev/) for comprehensive testing
-* [Storybook](https://storybook.js.org/) - Component development and documentation
-* Advanced testing - Smoke and acceptance testing capabilities
-* [Conventional commits](https://www.conventionalcommits.org/) - Standardized commit history management
-* [Observability](https://opentelemetry.io/) - Open Telemetry integration
-* [Absolute imports](https://nextjs.org/docs/advanced-features/module-path-aliases) - Simplified import structure
-* [Health checks](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) - Kubernetes-compatible monitoring
-* [Radix UI](https://www.radix-ui.com/) - Headless components for customization
-* [CVA](http://cva.style/) (Class Variance Authority) - Consistent design system creation
-* [Renovate BOT](https://www.whitesourcesoftware.com/free-developer-tools/renovate) - Automated dependency and security updates
-* [Patch-package](https://www.npmjs.com/package/patch-package) - External dependency fixes without compromises
-* Component relationship tools - Graph for managing coupling and cohesion
-* [Semantic Release](https://github.com/semantic-release/semantic-release) - Automated changelog generation
-* [T3 Env](https://env.t3.gg/) - Streamlined environment variable management
+```bash
+# Instalar dependencias
+pnpm install
 
-### Infrastructure & deployments
+# Iniciar servidor de desarrollo (con Turbopack)
+pnpm dev
 
-#### Vercel
+# Desarrollo con UI de Vitest
+pnpm test:ui
 
-Easily deploy your Next.js app with [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=github&utm_campaign=next-enterprise) by clicking the button below:
+# Storybook
+pnpm storybook
+```
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise)
+### Build & Deploy
 
-#### Custom cloud infrastructure
+```bash
+# Build de producción
+pnpm build
 
-**next-enterprise** offers dedicated infrastructure as code (IaC) solutions built with Terraform, designed specifically for deploying Next.js applications based on our extensive experience working with enterprise clients.
+# Iniciar servidor de producción
+pnpm start
 
-Learn more in our [documentation (docs.blazity.com)][docs] how to quickstart with the deployments using simple CLI.
+# Analizar bundle
+pnpm analyze
+```
 
-#### Available cloud providers and theirs features:
+### Code Quality
 
-* **AWS (Amazon Web Services)**
-  * Automated provisioning of AWS infrastructure
-  * Scalable & secure setup using:
-     * VPC - Isolated network infrastructure
-     * Elastic Container Service (ECS) - Container orchestration
-     * Elastic Container Registry (ECR) - Container image storage
-     * Application Load Balancer - Traffic distribution
-     * S3 + CloudFront - Static asset delivery and caching
-     * AWS WAF - Web Application Firewall protection
-     * Redis Cluster - Caching
-  * CI/CD ready - Continuous integration and deployment pipeline
+```bash
+# Linting
+pnpm lint
+pnpm lint:fix
 
-*... more coming soon*
+# Formatting
+pnpm prettier
+pnpm prettier:fix
 
-### Team & maintenance
+# Testing
+pnpm test
+pnpm test:watch
+pnpm test:coverage
+```
 
-**next-enterprise** is backed and maintained by [Blazity](https://blazity.com), providing up to date security features and integrated feature updates.
+### Herramientas
 
-#### Active maintainers
+```bash
+# Visualizar dependencias entre módulos
+pnpm coupling-graph
 
-- Igor Klepacki ([neg4n](https://github.com/neg4n)) - Open Source Software Developer
-- Tomasz Czechowski ([tomaszczechowski](https://github.com/tomaszczechowski)) - Solutions Architect & DevOps
-- Jakub Jabłoński ([jjablonski-it](https://github.com/jjablonski-it)) - Head of Integrations
+# Generar changelog automático
+npx semantic-release
+```
 
-#### All-time contributors
-[bmstefanski](https://github.com/bmstefanski)
+## ⚙️ Variables de Entorno
 
-## License
+Crea un archivo `.env.local` en la raíz del proyecto:
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=tu_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_supabase_anon_key
+
+# GraphQL
+NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:3000/graphql
+
+# OpenTelemetry (opcional)
+OTEL_SERVICE_NAME=next-enterprise
+```
+
+## 🎨 Componentes UI
+
+El proyecto incluye una colección completa de componentes UI construidos con Radix UI y Tailwind CSS:
+
+- **Layouts**: `AppLayout`, `AppHeader`, `AppSidebar`, `Breadcrumb`, `SectionHeader`, `DetailHeader`
+- **Primitivos**: `Button`, `Input`, `Card`, `Avatar`, `Tabs`, `Tooltip`, `Sheet`, `Popover`
+- **Especializados**: `CardTabs`, `MotionTabs`, `UserAvatarMenu`
+
+Todos documentados en Storybook: `pnpm storybook`
+
+## 🔐 Autenticación
+
+El proyecto usa Supabase para autenticación con middleware de Next.js:
+
+```typescript
+// Obtener usuario actual
+import { useCurrentUser } from 'hooks/use-current-user'
+
+function Component() {
+  const { data: user, isLoading } = useCurrentUser()
+  // ...
+}
+```
+
+## 📊 GraphQL con Apollo
+
+```typescript
+// Definir query en modules/{feature}/graphql/queries.ts
+export const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      name
+      email
+    }
+  }
+`
+
+// Usar en componente
+import { useQuery } from '@apollo/client'
+import { GET_USERS } from 'modules/users/graphql/queries'
+
+function UsersPage() {
+  const { data, loading } = useQuery(GET_USERS)
+  // ...
+}
+```
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests
+pnpm test
+
+# Con UI interactiva
+pnpm test:ui
+
+# Con coverage
+pnpm test:coverage
+```
+
+## 📦 Deploy
+
+### Vercel (Recomendado)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-repo)
+
+### Docker
+
+```bash
+# Build
+docker build -t next-enterprise .
+
+# Run
+docker run -p 3000:3000 next-enterprise
+```
+
+## 🔧 Configuración Adicional
+
+### ESLint
+
+La configuración de ESLint sigue las mejores prácticas con:
+- Reglas de Next.js
+- TypeScript strict
+- Import organization
+- Tailwind CSS class sorting
+
+### Prettier
+
+Configuración personalizada para mantener consistencia en el código.
+
+### Bundle Analyzer
+
+Analiza el tamaño de tu bundle:
+
+```bash
+pnpm analyze
+```
+
+## 📚 Recursos
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Apollo Client Documentation](https://www.apollographql.com/docs/react/)
+- [Supabase Documentation](https://supabase.com/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Radix UI Documentation](https://www.radix-ui.com/docs/primitives/overview/introduction)
+
+## 🤝 Contribuir
+
+Este es un proyecto privado/empresarial. Para contribuir, por favor sigue las convenciones establecidas y crea un pull request.
+
+## 📄 Licencia
 
 MIT
 
+---
 
-[docs]: https://docs.blazity.com/next-enterprise/deployments/enterprise-cli
+**Requisitos del sistema:**
+- Node.js >= 20.0.0
+- pnpm 10.0.0 (gestionado con Corepack)

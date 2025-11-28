@@ -25,5 +25,13 @@ interface AppLayoutProps {
  * ```
  */
 export function AppLayout({ children }: AppLayoutProps) {
-	return <div className="flex flex-1 flex-col gap-4">{children}</div>
+	return (
+		<div className="flex flex-1 flex-col gap-4">
+			<main className="bg-gray min-h-screen dark:bg-gray-900">
+				<div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+					{children}
+				</div>
+			</main>
+		</div>
+	)
 }
